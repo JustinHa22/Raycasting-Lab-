@@ -5,25 +5,35 @@ public class MovementScript : MonoBehaviour {
 
 	Rigidbody rb; 
 
+	float randomNum; 
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
-		//Ray moveray = new Ray (transform.position, transform.forward);
 	}
-	
-	// Update is called once per frame
+
 	void FixedUpdate () {
-		rb.velocity = transform.forward * 10f;
+		rb.velocity = transform.forward * 50f + Physics.gravity;
 
-		Ray frontRay = new Ray (transform.position, transform.forward);
-		Ray rightRay = new Ray (transform.position, transform.right); 
-		Ray leftRay = new Ray (transform.position, -transform.right);
+		Ray moveRay = new Ray (transform.position, transform.forward);
 
-		RaycastHit rayHit = new RaycastHit ();
+		Debug.DrawRay(moveRay.origin,moveRay.direction, Color.red);
 
-		Debug.DrawRay (frontRay.origin, frontRay.direction * 10f, Color.red);
-		Debug.DrawRay (rightRay.origin, rightRay.direction * 20f, Color.blue);
-		Debug.DrawRay (leftRay.origin, leftRay.direction * 20f, Color.yellow);
+		randomNum = Random.value;
+
+		if (Physics.SphereCast (moveRay, 1f, 2f) == true) {
+
+			if (randomNum < .33f) {
+				transform.Rotate (0f, 180f, 0f);
+			}
+			if (randomNum > .33f && randomNum < .66f) {
+				transform.Rotate (0f, 90f, 0f);
+			}
+			if (randomNum > .66f) {
+				transform.Rotate (0f, -90f, 0f);
+			}
+		}
+
 
 	}
 }
