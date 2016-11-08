@@ -3,11 +3,9 @@ using System.Collections;
 
 public class Mouse : MonoBehaviour {
 
-	//Cat catScript;
 	public Transform cat;
 
 	void Start () {
-		//catScript = GameObject.Find ("Cat").GetComponent<Cat> ();
 	}
 
 	void FixedUpdate () {
@@ -19,8 +17,8 @@ public class Mouse : MonoBehaviour {
 			RaycastHit mouseRayHitInfo;
 
 			if (Physics.Raycast (mouseRay, out mouseRayHitInfo, 100f) == true) {
-				if (mouseRayHitInfo.collider.tag == "Cat" && mouseRayHitInfo.distance < 15f) {
-					this.GetComponent<Rigidbody> ().AddForce (-directionToCat.normalized * 10000f);
+				if (mouseRayHitInfo.collider.tag == "Cat" && mouseRayHitInfo.distance < 25f) {
+					this.GetComponent<Rigidbody> ().AddForce (-directionToCat.normalized * 500f, ForceMode.Impulse);
 				}
 			}
 		}

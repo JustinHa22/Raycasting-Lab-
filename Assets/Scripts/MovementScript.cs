@@ -3,13 +3,14 @@ using System.Collections;
 
 public class MovementScript : MonoBehaviour {
 
-	Rigidbody rb; 
+	Rigidbody rb;  
 
 	float randomNum; 
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
+
 	}
 
 	void FixedUpdate () {
@@ -33,7 +34,5 @@ public class MovementScript : MonoBehaviour {
 				transform.Rotate (0f, -90f, 0f);
 			}
 		}
-
-
 	}
 }

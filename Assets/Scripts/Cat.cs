@@ -5,7 +5,6 @@ public class Cat : MonoBehaviour {
 
 	public Transform mouse;
 
-
 	// Use this for initialization
 	void Start () {
 	
@@ -28,10 +27,10 @@ public class Cat : MonoBehaviour {
 			RaycastHit catRayHitInfo;
 
 			if (Physics.Raycast (catRay, out catRayHitInfo, 100f) == true) {
-				if (catRayHitInfo.collider.tag == "Mouse" && catRayHitInfo.distance < 20f) {
+				if (catRayHitInfo.collider.tag == "Mouse" && catRayHitInfo.distance < 15) {
 						Destroy (mouse.gameObject);
 					} 
-						this.GetComponent<Rigidbody> ().AddForce (directionToMouse.normalized * 1000f);
+						this.GetComponent<Rigidbody> ().AddForce (directionToMouse.normalized * 5000f);
 					}
 				}
 			}
