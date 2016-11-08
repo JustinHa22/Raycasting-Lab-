@@ -29,7 +29,7 @@ public class Cat : MonoBehaviour {
 			Ray catRay = new Ray (this.transform.position, directionToMouse);
 			RaycastHit catRayHitInfo;
 
-			if (Physics.Raycast (catRay, out catRayHitInfo, 100f) == true) {
+			if (Physics.Raycast (catRay, out catRayHitInfo, 50f) == true) {
 				if (catRayHitInfo.collider.tag == "Mouse" && catRayHitInfo.distance < 15) {
 						mouseDead.Play ();
 						Destroy (mouse.gameObject);
