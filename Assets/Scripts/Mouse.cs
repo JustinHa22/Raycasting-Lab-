@@ -5,7 +5,10 @@ public class Mouse : MonoBehaviour {
 
 	public Transform cat;
 
+	public AudioSource myAudio;
+
 	void Start () {
+		myAudio = GetComponent<AudioSource> ();
 	}
 
 	void FixedUpdate () {
